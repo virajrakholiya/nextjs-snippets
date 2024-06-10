@@ -47,7 +47,7 @@ function SnippetEditForm({ snippet }: SnippetsEditForm) {
           type="submit"
           className="btn p-2 border rounded-xl bg-black text-white"
         >
-          Save
+          Save Me
         </button>
       </form>
     </div>
