@@ -12,12 +12,25 @@ export async function editSnippet(id: number, code: string) {
   redirect(`/snippets/${id}`);
 }
 
-export async function deleteSnippet(id:number)
-{
-    await db.snippet.delete({
-        where:{
-            id
-        }
-    })
-    redirect('/')
+export async function deleteSnippet(id: number) {
+  await db.snippet.delete({
+    where: {
+      id,
+    },
+  });
+  redirect("/");
 }
+
+export const SnippetCreatePage = async (formData: FormData) => {
+  const title = formData.get("title") as string; // name="title"
+  const code = formData.get("code") as string; // name="code"
+
+  const snippet = await db.snippet.create({
+    data: {
+      title,
+      code,
+    },
+  });
+  console.log(snippet);
+  redirect("/");
+};

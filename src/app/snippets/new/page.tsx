@@ -1,22 +1,7 @@
-import { db } from "@/db";
-import { redirect } from "next/navigation";
 import React from "react";
-
+import {SnippetCreatePage} from '@/actions/action'
 function page() {
-  const SnippetCreatePage = async (formData: FormData) => {
-    "use server";
-    const title = formData.get("title") as string; // name="title"
-    const code = formData.get("code") as string; // name="code"
-
-    const snippet = await db.snippet.create({
-      data: {
-        title,
-        code,
-      },
-    });
-    console.log(snippet);
-    redirect("/");
-  };
+ 
   return (
     <div>
       <form action={SnippetCreatePage}>
